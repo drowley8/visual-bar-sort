@@ -6,9 +6,9 @@ def main():
     window.title("Visual Bar Sort")
     canvas.pack()
     barlyst = [canvas.create_rectangle(x*10, 0, x*10-10, 5*x, fill="#fff") for x in range(1, BARS+1)]
-    scramble(barlyst)
-    bubble(barlyst)
-    scramble(barlyst, 100)
+    while True:
+        scramble(barlyst)
+        bubble(barlyst)
     #inorder(barlyst)
     window.mainloop()
 
@@ -23,9 +23,9 @@ def swap(lyst, index_1, index_2):
     canvas.itemconfig(lyst[index_2], fill="#fff")
     window.update()
 
-def scramble(lyst, swaps=1000):
-    for _ in range(swaps):
-        swap(lyst, random.randint(0, BARS-1), random.randint(0, BARS-1))
+def scramble(lyst):
+    for i in range(len(lyst)):
+        swap(lyst, i, random.randint(0, BARS-1))
 
 def inorder(lyst):
     for x in range(len(lyst)-1):
